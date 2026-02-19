@@ -13,10 +13,7 @@ from rubin_scheduler.scheduler.targetofo import gen_all_events
 from rubin_scheduler.scheduler.model_observatory import ModelObservatory, tma_movement
 from rubin_scheduler.scheduler.schedulers import CoreScheduler, SimpleBandSched
 from rubin_scheduler.scheduler.utils import (
-    CurrentAreaMap,
-    Footprint,
     ObservationArray,
-    make_rolling_footprints,
 )
 from rubin_scheduler.scheduler import sim_runner
 
@@ -57,8 +54,14 @@ def set_run_info(
     return fileroot, extra_info
 
 
-def make_observatory(nside=DEFAULT_NSIDE, survey_start_mjd=SURVEY_START_MJD, sim_to_o=None,
-                     tma_performance=40.0, readtime: float = 3.07, band_changetime: float = 140.0,):
+def make_observatory(
+    nside=DEFAULT_NSIDE,
+    survey_start_mjd=SURVEY_START_MJD,
+    sim_to_o=None,
+    tma_performance=40.0,
+    readtime: float = 3.07,
+    band_changetime: float = 140.0,
+):
     observatory = ModelObservatory(
         nside=nside, mjd_start=survey_start_mjd, sim_to_o=sim_to_o
     )
@@ -174,10 +177,12 @@ if __name__ == "__main__":
 
     observatory = make_observatory(sim_to_o=sim_ToOs)
 
-    observatory, scheduler, observations = run_sched(scheduler,
-                                                     observatory,
-                                                     survey_length=args.survey_length,
-                                                     nside=nside,
-                                                     filename=filename,
-                                                     verbose=args.verbose,
-                                                     event_table=event_table)
+    observatory, scheduler, observations = run_sched(
+        scheduler,
+        observatory,
+        survey_length=args.survey_length,
+        nside=nside,
+        filename=filename,
+        verbose=args.verbose,
+        event_table=event_table,
+    )
