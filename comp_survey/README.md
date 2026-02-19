@@ -16,10 +16,13 @@ Updates to code that might need to get merged back in:
 * imports for lsst_survey, roman_survey, too_survey
 * swap of SURVEY_START_MJD
 * add generate_qm
-* ran new ddf npz and updated path to it
+* ran new ddf npz and updated hash
 
 
 
 Changes from v5.2
 
 * updating survey start date to april 1, 2025
+
+
+check that all the surveys have target_name, etc filled out
