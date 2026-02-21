@@ -17,6 +17,7 @@ Updates to code that might need to get merged back in:
 * swap of SURVEY_START_MJD
 * add generate_qm
 * ran new ddf npz and updated hash
+* checking if need too_detailers.append(detailers.BandSortDetailer()) added.
 
 
 
