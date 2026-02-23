@@ -1,6 +1,9 @@
 Run some simulations to try and cover the DESI footprint
 
 
+desi1:  Add a tier to get the desi observations
+desit2: Same, but push the start of rolling back a year
+
 
 
 Initial thoughts:  Let's try making some blob-like surveys with the DESI footprint, and we'll make a footprint basis function that actually uses number of observations rather than relative I guess. Kill the survey objects after year 4, set to only go if moon is down, moon not rising for x time, and twilight not starting for x time. 
