@@ -1381,7 +1381,6 @@ def generate_blobs(
                 nexp=nexp,
                 detailers=detailer_list,
                 check_scheduled=True,
-                twilight_scale=True,
                 **blob_survey_params,
             )
         )
