@@ -3,6 +3,8 @@
 # sims_featureScheduler_runs5.2
 Even more survey strategy simulations
 
+Results often posted at:  https://usdf-maf.slac.stanford.edu/
+
 
 runs:
 
