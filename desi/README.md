@@ -11,6 +11,8 @@ Initial thoughts:  Let's try making some blob-like surveys with the DESI footpri
 
 after first pass--looks pretty good. There's a small strip that didn't complete by Y4 because there's an area limit set. So maybe lift the area requirement (or increase HA range) after Y3 to make sure it fills.
 
+Looks like we can a get a uniform year at Y7, but no way to make g uniform at Y4 anymore.
+
 -----
 
 
