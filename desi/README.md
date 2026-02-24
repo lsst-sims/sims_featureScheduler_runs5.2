@@ -8,6 +8,9 @@ desit2: Same, but push the start of rolling back a year
 
 Initial thoughts:  Let's try making some blob-like surveys with the DESI footprint, and we'll make a footprint basis function that actually uses number of observations rather than relative I guess. Kill the survey objects after year 4, set to only go if moon is down, moon not rising for x time, and twilight not starting for x time. 
 
+
+after first pass--looks pretty good. There's a small strip that didn't complete by Y4 because there's an area limit set. So maybe lift the area requirement (or increase HA range) after Y3 to make sure it fills.
+
 -----
 
 

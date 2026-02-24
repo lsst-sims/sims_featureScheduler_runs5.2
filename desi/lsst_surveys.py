@@ -72,6 +72,27 @@ BLOB_SURVEY_PARAMS_DEFAULTS = {
 }
 
 
+class OnlyAfterNightBasisFunction(bf.BaseBasisFunction):
+    """Only return feasible if current night is less than
+    maximum
+
+    Parameters
+    ----------
+    night_max : `int`
+        The maximum night. Default 366.
+    """
+
+    def __init__(self, night_min=366):
+        super(OnlyAfterNightBasisFunction, self).__init__()
+        self.night_min = night_min
+
+    def check_feasibility(self, conditions, indx=None):
+        result = False
+        if conditions.night > self.night_min:
+            result = True
+        return result
+
+
 def safety_masks(
     nside: int = DEFAULT_NSIDE,
     moon_distance: float = 30,
@@ -597,6 +618,7 @@ def gen_desi_surveys(
     blob_survey_params: dict | None = None,
     safety_mask_params: dict | None = None,
     n_obs_max: int = 40,
+    only_after_night=0,
 ) -> list[BlobSurvey]:
     """Coherent area surveys (BlobSurvey with single visit) that
     are intended to acquire template visits in a convenient yet
@@ -746,6 +768,9 @@ def gen_desi_surveys(
                 0.0,
             )
         )
+
+        # Prevent running early
+        bfs.append((OnlyAfterNightBasisFunction(night_min=only_after_night), 0.0))
 
         # Add safety masks
         masks = safety_masks(**safety_mask_params)

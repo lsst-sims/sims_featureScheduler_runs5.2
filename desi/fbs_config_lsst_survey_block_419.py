@@ -286,6 +286,21 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         n_obs_max=40,
     )
 
+    # Not as high area req, but only after Y2.5
+    desi += lsst_surveys.gen_desi_surveys(
+        footprints=desi_fp,
+        nside=nside,
+        band1s=["u", "g"],
+        dark_only=["u", "g"],
+        exptime=exptime,
+        nexp=nexp,
+        u_exptime=u_exptime,
+        u_nexp=u_nexp,
+        area_required=2.0,
+        n_obs_max=40,
+        only_after_night=365*2.5
+    )
+
     # Define the greedy surveys (single-visit per call)
     greedy = lsst_surveys.gen_greedy_surveys(
         nside=nside,
