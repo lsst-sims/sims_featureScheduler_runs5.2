@@ -368,7 +368,7 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         nexp=nexp,
         u_exptime=u_exptime,
         u_nexp=u_nexp,
-        n_obs_template={"u": 4, "g": 4, "r": 4, "i": 4, "z": 4, "y": 4},
+        n_obs_template={"u": 6, "g": 6, "r": 6, "i": 6, "z": 6, "y": 6},
         science_program=science_program,
         blob_survey_params=blob_survey_params,
         safety_mask_params=safety_mask_params,
