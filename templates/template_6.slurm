@@ -8,7 +8,7 @@
 #SBATCH --error=output-%j.txt
 #
 #SBATCH --nodes=1                       # Number of nodes
-#SBATCH --ntasks=1
+#SBATCH --ntasks=3
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=20g
 #
@@ -25,8 +25,7 @@ source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin12
 export OPENBLAS_NUM_THREADS=1
 
-python templates_6.py
-
+cat templates.sh parallel -j 3
 
 # rm maf.sh
 #  

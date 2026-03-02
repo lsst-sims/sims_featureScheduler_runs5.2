@@ -7,7 +7,7 @@ import rubin_scheduler
 import numpy as np
 import numpy.typing as npt
 
-from fbs_config_lsst_survey_block_419 import SURVEY_START_MJD
+from fbs_config_8 import SURVEY_START_MJD
 from rubin_scheduler.utils import DEFAULT_NSIDE
 from rubin_scheduler.scheduler.targetofo import gen_all_events
 from rubin_scheduler.scheduler.model_observatory import ModelObservatory, tma_movement
@@ -18,7 +18,7 @@ from rubin_scheduler.scheduler.utils import (
 from rubin_scheduler.scheduler import sim_runner
 
 
-from fbs_config_lsst_survey_block_419 import get_scheduler
+from fbs_config_8 import get_scheduler
 
 
 def set_run_info(
