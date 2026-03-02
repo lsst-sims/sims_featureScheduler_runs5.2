@@ -13,6 +13,10 @@ after first pass--looks pretty good. There's a small strip that didn't complete 
 
 Looks like we can a get a uniform year at Y7, but no way to make g uniform at Y4 anymore.
 
+Note that most surveys ignore ToO, but I let the DESI footprint use those, so there are some minor artifacts from that I think. 
+
+I don't understand why desi impacts color-slope triplets so much. Maybe just compacts that area of sky available to do it? Maybe the desi observations are boxing out the triplets a lot?
+
 -----
 
 
