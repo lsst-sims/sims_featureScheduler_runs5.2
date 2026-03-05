@@ -3,7 +3,7 @@
 #SBATCH --account=rubin:developers      # Account name
 #SBATCH --partition=milano
 #
-#SBATCH --job-name=comp52
+#SBATCH --job-name=adind52
 #SBATCH --output=output-%j.txt
 #SBATCH --error=output-%j.txt
 #
@@ -13,7 +13,7 @@
 #SBATCH --mem-per-cpu=20g
 #
 #SBATCH --time=2-14:10:00
-#SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs5.2/comp_survey
+#SBATCH --chdir=/sdf/data/rubin/shared/fbs_sims/sims_featureScheduler_runs5.2/add_indexdet
 #SBATCH --mail-user=yoachim@uw.edu
 #
 ##turn on e-mail notification
@@ -25,7 +25,7 @@ source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin12
 export OPENBLAS_NUM_THREADS=1
 
-python comp_survey.py
+python add_ind.py
 
 
 # rm maf.sh
