@@ -164,4 +164,5 @@ if __name__ == "__main__":
         filename=filename,
         verbose=args.verbose,
         event_table=event_table,
+        extra_info=extra_info,
     )
