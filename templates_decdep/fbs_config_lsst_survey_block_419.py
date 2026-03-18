@@ -105,7 +105,7 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         "twilight_scale": True,
     }
     # Seeing (FWHM in ") max for template
-    fwhm_template_max = 1.0
+    fwhm_template_max = 1.2
 
     # Parameters for rolling cadence footprint definition
     nslice = 2  # N slices for rolling
