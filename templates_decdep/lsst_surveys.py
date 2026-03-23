@@ -68,7 +68,6 @@ BLOB_SURVEY_PARAMS_DEFAULTS = {
     "smoothing_kernel": None,
     "nside": DEFAULT_NSIDE,
     "seed": 42,
-    "dither": "night",
     "twilight_scale": True,
 }
 
@@ -568,7 +567,6 @@ def gen_template_surveys(
         basis_functions = [val[0] for val in bfs]
 
         survey_name = "templates, %s" % bandname
-
         surveys.append(
             BlobSurvey(
                 basis_functions,

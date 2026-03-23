@@ -167,6 +167,7 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         wfd_indx=roll_indx,
         order_roll=1,
         n_cycles=3,
+        n_constant_start=3,
         uniform=rolling_uniform,
     )
 

@@ -68,7 +68,6 @@ BLOB_SURVEY_PARAMS_DEFAULTS = {
     "smoothing_kernel": None,
     "nside": DEFAULT_NSIDE,
     "seed": 42,
-    "dither": "night",
     "twilight_scale": True,
 }
 

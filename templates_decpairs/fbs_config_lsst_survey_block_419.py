@@ -101,7 +101,6 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         "smoothing_kernel": None,
         "nside": nside,
         "seed": 42,
-        "dither": "night",
         "twilight_scale": True,
     }
     # Seeing (FWHM in ") max for template
