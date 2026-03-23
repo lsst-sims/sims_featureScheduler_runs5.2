@@ -584,6 +584,7 @@ def gen_template_surveys(
                 nexp=nexp,
                 detailers=detailer_list,
                 area_required=area_required,
+                n_visits=1,
                 **blob_survey_params,
             )
         )
