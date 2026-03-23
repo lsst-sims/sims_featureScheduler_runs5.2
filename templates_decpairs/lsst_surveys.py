@@ -43,6 +43,7 @@ from rubin_scheduler.scheduler.surveys import (
     GreedySurvey,
     LongGapSurvey,
     ScriptedSurvey,
+    BlobPairsSurvey,
 )
 from rubin_scheduler.scheduler.utils import (
     ConstantFootprint,
@@ -572,7 +573,7 @@ def gen_template_surveys(
             detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
 
         surveys.append(
-            BlobSurvey(
+            BlobPairsSurvey(
                 basis_functions,
                 weights,
                 bandname1=bandname,
