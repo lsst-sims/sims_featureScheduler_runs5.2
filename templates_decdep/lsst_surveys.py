@@ -577,6 +577,7 @@ def gen_template_surveys(
                 bandname2=None,
                 exptime=exptime,
                 ideal_pair_time=pair_time,
+                dither="call",
                 survey_name=survey_name,
                 science_program=science_program,
                 observation_reason=f"template_blob_{bandname}_{pair_time:.1f}",
