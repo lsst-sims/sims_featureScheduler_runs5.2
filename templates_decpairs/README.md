@@ -5,4 +5,4 @@
 * bump EUCLID deep to out of first year
 * put in blob pairs
 
-Still short on g. Try adding a g+g survey so it can get done.
+
