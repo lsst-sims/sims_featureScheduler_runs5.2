@@ -6,3 +6,5 @@
 * put in blob pairs
 
 
+fbs_config_mixed.py:
+trying template tier of u+u, g+g, g+r, r+i, i+z, r+z, z+y, y+y. 
