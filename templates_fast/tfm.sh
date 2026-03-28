@@ -1,0 +1,2 @@
+python templates_fast_mixed.py
+python templates_fast_mixed2.py

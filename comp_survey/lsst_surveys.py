@@ -1714,10 +1714,10 @@ def generate_twilight_near_sun(
         safety_mask_params = copy.deepcopy(safety_mask_params)
     if (
         "shadow_minutes" not in safety_mask_params
-        or safety_mask_params["shadow_minutes"] < ideal_pair_time * 4
+        or safety_mask_params["shadow_minutes"] < ideal_pair_time * n_repeat
     ):
         # pair_time * 4 (for the quad)
-        safety_mask_params["shadow_minutes"] = ideal_pair_time * 4
+        safety_mask_params["shadow_minutes"] = ideal_pair_time * n_repeat
 
     survey_name = "twilight_near_sun"
     observation_reason = "twilight_near_sun"
