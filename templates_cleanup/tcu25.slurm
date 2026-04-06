@@ -8,7 +8,7 @@
 #SBATCH --error=output-%j.txt
 #
 #SBATCH --nodes=1                       # Number of nodes
-#SBATCH --ntasks=5
+#SBATCH --ntasks=4
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=20g
 #
@@ -25,17 +25,17 @@ source ~/anaconda3/etc/profile.d/conda.sh
 conda activate rubin12
 export OPENBLAS_NUM_THREADS=1
 
-python templates_cleanup_25.py
+#python templates_cleanup_25.py
 
 
 rm maf2.sh
  
-ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "scimaf_dir --db '{}'" > maf.sh
-ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "glance_dir --db '{}'" >> maf.sh
-ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "ddf_dir --db '{}'" >> maf.sh
-ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "metadata_dir --db '{}'" >> maf.sh
+ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "scimaf_dir --db '{}'" > maf2.sh
+ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "glance_dir --db '{}'" >> maf2.sh
+ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "ddf_dir --db '{}'" >> maf2.sh
+ls templates_cleanup_25*_10yrs.db | xargs -I'{}' echo "metadata_dir --db '{}'" >> maf2.sh
 
-generate_ss
-grep templates_cleanup_25 ss_script.sh >> maf2.sh
+#generate_ss
+#grep templates_cleanup_25 ss_script.sh >> maf2.sh
  
-cat maf2.sh | parallel -j 5
+cat maf2.sh | parallel -j 4
