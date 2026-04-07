@@ -569,8 +569,8 @@ def gen_template_surveys(
         basis_functions = [val[0] for val in bfs]
 
         survey_name = "templates, %s%s" % (bandname, bandname2)
-        if bandname2 is not None:
-            detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
+        #if bandname2 is not None:
+        #    detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
 
         surveys.append(
             BlobPairsSurvey(

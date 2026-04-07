@@ -381,7 +381,7 @@ def gen_template_surveys(
     HA_max: float = 24 - 2.5,
     extra_HA_mins: list[float] = [1.25],
     extra_HA_maxes: list[float] = [24.-1.25],
-    additional_areas: list[float] = [10.],
+    additional_area_limits: list[float] = [10.],
     max_alt: float = 76.0,
     m5_weight: float = 6.0,
     footprint_weight: float = 1.5,
@@ -598,12 +598,11 @@ def gen_template_surveys(
                 nexp=nexp,
                 detailers=detailer_list,
                 additional_masks=additional_masks,
-                additional_areas=additional_areas,
+                additional_area_limits=additional_area_limits,
                 area_required=area_required,
                 **blob_survey_params,
             )
         )
-
     return surveys
 
 

@@ -18,7 +18,7 @@ from rubin_scheduler.scheduler.utils import (
 from rubin_scheduler.scheduler import sim_runner
 
 
-from fbs_config_lsst_survey_block_419 import get_scheduler
+from fbs_config_mixed import get_scheduler
 
 
 def set_run_info(
