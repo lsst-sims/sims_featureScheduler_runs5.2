@@ -1,0 +1,2 @@
+python templates_slow_clean.py
+python templates_slow_clean_mixed.py
