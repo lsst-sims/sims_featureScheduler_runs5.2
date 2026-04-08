@@ -5,7 +5,7 @@ import hashlib
 import os
 import pathlib
 
-import lsst_surveys as lsst_surveys
+import lsst_surveys_mixed as lsst_surveys
 import roman_surveys as roman_surveys
 import too_surveys as too_surveys
 import numpy as np
