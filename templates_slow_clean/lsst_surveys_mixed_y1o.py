@@ -572,7 +572,7 @@ def gen_template_surveys(
         weights = [val[1] for val in bfs]
         basis_functions = [val[0] for val in bfs]
 
-        survey_name = "templates, %s%s" % (bandname, bandname2)
+        survey_name = "templates %s%s" % (bandname, bandname2)
         #if bandname2 is not None:
         #    detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
 
@@ -808,9 +808,9 @@ def blob_for_long(
         weights = [val[1] for val in bfs]
         basis_functions = [val[0] for val in bfs]
         if bandname2 is None:
-            survey_name = "blob_long, %s" % bandname
+            survey_name = "blob_long %s" % bandname
         else:
-            survey_name = "blob_long, %s%s" % (bandname, bandname2)
+            survey_name = "blob_long %s%s" % (bandname, bandname2)
         if bandname2 is not None:
             detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
 
@@ -937,7 +937,7 @@ def gen_long_gaps_survey(
     blob_names = []
     for fn1, fn2 in zip(f1, f2):
         for ab in ["a", "b"]:
-            blob_names.append("blob_long, %s%s, %s" % (fn1, fn2, ab))
+            blob_names.append("blob_long %s%s %s" % (fn1, fn2, ab))
     for bandname1, bandname2 in zip(f1, f2):
         blob = blob_for_long(
             footprints=footprints,
@@ -1390,9 +1390,9 @@ def generate_blobs(
 
         # Set survey name
         if bandname2 is None:
-            survey_name = "pair_%i, %s" % (pair_time, bandname)
+            survey_name = "pair_%i %s" % (pair_time, bandname)
         else:
-            survey_name = "pair_%i, %s%s" % (pair_time, bandname, bandname2)
+            survey_name = "pair_%i %s%s" % (pair_time, bandname, bandname2)
         if bandname2 is not None:
             detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
 
@@ -1620,9 +1620,9 @@ def generate_short_blobs(
 
         # Set survey_name and observation_reason
         if bandname2 is None:
-            survey_name = "pair_%i, %s" % (pair_time, bandname)
+            survey_name = "pair_%i %s" % (pair_time, bandname)
         else:
-            survey_name = "pair_%i, %s%s" % (pair_time, bandname, bandname2)
+            survey_name = "pair_%i %s%s" % (pair_time, bandname, bandname2)
         if bandname2 is not None:
             detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
 
