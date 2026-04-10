@@ -5,7 +5,7 @@ import hashlib
 import os
 import pathlib
 
-import lsst_surveys_mixed_y1o as lsst_surveys
+import lsst_surveys as lsst_surveys
 import roman_surveys as roman_surveys
 import too_surveys as too_surveys
 import numpy as np
@@ -295,22 +295,6 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         safety_mask_params=safety_mask_params,
     )
 
-    # Define the alternate twilight (and other short time period)
-    # short 15minute pairs
-    short_blobs = lsst_surveys.generate_short_blobs(
-        footprints=footprints,
-        nside=nside,
-        camera_rot_limits=camera_rot_limits,
-        exptime=exptime,
-        nexp=nexp,
-        pair_time=15.0,
-        repeat_weight=0,
-        night_pattern=reverse_ei_night_pattern,
-        science_program=science_program,
-        blob_survey_params=blob_survey_params,
-        safety_mask_params=safety_mask_params,
-    )
-
     # Define the standard pairs during the night survey
     blobs = lsst_surveys.generate_blobs(
         footprints=footprints,
@@ -408,7 +392,6 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         template_surveys,
         long_gaps,
         blobs,
-        short_blobs,
         neo_micro,
         greedy,
     ]
