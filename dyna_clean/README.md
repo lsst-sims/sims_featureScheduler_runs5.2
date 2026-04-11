@@ -1,2 +1,5 @@
-let's make the year 1 templates with the dynamic pairs change as well
+let's make the year 1 templates with the dynamic pairs change as well (no 15 min blobs)
+
+first pass is filter thrashing for some reason--maybe only mild thrashing. Maybe just set template pairs to be a little longer--setting to 25 min.
+
 
