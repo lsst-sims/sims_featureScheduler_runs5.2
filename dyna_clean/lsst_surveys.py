@@ -33,24 +33,20 @@ __all__ = (
 import copy
 from typing import Any
 
-import numpy as np
 import healpy as hp
+import numpy as np
 import numpy.typing as npt
 import rubin_scheduler.scheduler.basis_functions as bf
 import rubin_scheduler.scheduler.detailers as detailers
 from rubin_scheduler.scheduler.surveys import (
+    BlobPairsSurvey,
     BlobSurvey,
     GreedySurvey,
     LongGapSurvey,
     ScriptedSurvey,
-    BlobPairsSurvey,
 )
-from rubin_scheduler.scheduler.utils import (
-    ConstantFootprint,
-    Footprints,
-    ecliptic_area,
-)
-from rubin_scheduler.utils import DEFAULT_NSIDE, SURVEY_START_MJD, hpid2_ra_dec, Site
+from rubin_scheduler.scheduler.utils import ConstantFootprint, Footprints, ecliptic_area
+from rubin_scheduler.utils import DEFAULT_NSIDE, SURVEY_START_MJD, Site, hpid2_ra_dec
 
 # Set up values to use as kwarg defaults.
 NEXP = 1
@@ -75,8 +71,7 @@ BLOB_SURVEY_PARAMS_DEFAULTS = {
 
 
 def seeing_limit_by_dec(nside=DEFAULT_NSIDE, zenith_fwhm_limit=1.0):
-    """Make a seeing limit value a function of declination
-    """
+    """Make a seeing limit value a function of declination"""
     site = Site("LSST")
     hpid = np.arange(hp.nside2npix(nside))
     ra, dec = hpid2_ra_dec(nside, hpid)
@@ -167,7 +162,9 @@ def safety_masks(
     mask_bfs.append(bf.PlanetMaskBasisFunction(nside=nside))
     # Avoid the wind
     mask_bfs.append(
-        bf.MaskDirectWindBasisFunction(nside=nside, wind_speed_maximum=wind_speed_maximum)
+        bf.MaskDirectWindBasisFunction(
+            nside=nside, wind_speed_maximum=wind_speed_maximum
+        )
     )
     # Avoid the alt/az limits - this will pick up limits from the
     # yaml file configurations for the summit as well
@@ -381,8 +378,8 @@ def gen_template_surveys(
     HA_min: float = 2.5,
     HA_max: float = 24 - 2.5,
     extra_HA_mins: list[float] = [1.25],
-    extra_HA_maxes: list[float] = [24.-1.25],
-    additional_area_limits: list[float] = [10.],
+    extra_HA_maxes: list[float] = [24.0 - 1.25],
+    additional_area_limits: list[float] = [10.0],
     max_alt: float = 76.0,
     m5_weight: float = 6.0,
     footprint_weight: float = 1.5,
@@ -574,14 +571,14 @@ def gen_template_surveys(
         basis_functions = [val[0] for val in bfs]
 
         survey_name = "templates %s%s" % (bandname, bandname2)
-        #if bandname2 is not None:
+        # if bandname2 is not None:
         #    detailer_list.append(detailers.TakeAsPairsDetailer(bandname=bandname2))
 
         additional_masks = []
         for ha_min, ha_max in zip(extra_HA_mins, extra_HA_maxes):
-            additional_masks.append(bf.RevHaMaskBasisFunction(ha_min=ha_min,
-                                                              ha_max=ha_max,
-                                                              nside=nside))
+            additional_masks.append(
+                bf.RevHaMaskBasisFunction(ha_min=ha_min, ha_max=ha_max, nside=nside)
+            )
 
         surveys.append(
             BlobPairsSurvey(
@@ -1370,13 +1367,13 @@ def generate_blobs(
                         good_seeing_weight,
                     )
                 )
-        # Make sure we respect scheduled observations
-        # bfs.append((bf.TimeToScheduledBasisFunction(time_needed=scheduled_respect), 0))
 
+        time_needed = times_needed[1]
         if bandname2 is None:
             time_needed = times_needed[0]
-        else:
-            time_needed = times_needed[1]
+        # Make sure we respect scheduled observations
+        # bfs.append((bf.TimeToScheduledBasisFunction(time_needed=scheduled_respect), 0))
+        
         # bfs.append((bf.TimeToTwilightBasisFunction(time_needed=time_needed), 0.0))
         bfs.append((bf.NotTwilightBasisFunction(), 0.0))
 

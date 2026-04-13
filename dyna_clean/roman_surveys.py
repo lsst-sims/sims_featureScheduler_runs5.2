@@ -193,6 +193,9 @@ def gen_roman_on_season(
         nexps=nexps,
         survey_name=survey_name,
         detailers=details,
+        target_name=None,
+        science_program=None,
+        observation_reason=None,
     )
     return survey
 
@@ -321,5 +324,8 @@ def gen_roman_off_season(
         exptimes=exptimes,
         survey_name=survey_name,
         detailers=details,
+        target_name=None,
+        science_program=None,
+        observation_reason=None,
     )
     return survey

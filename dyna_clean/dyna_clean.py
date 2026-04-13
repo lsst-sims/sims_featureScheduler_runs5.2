@@ -2,22 +2,18 @@ import argparse
 import os
 import subprocess
 import sys
-import rubin_scheduler
 
 import numpy as np
 import numpy.typing as npt
-
-from rubin_scheduler.utils import DEFAULT_NSIDE
-from rubin_scheduler.scheduler.targetofo import gen_all_events
+import rubin_scheduler
+from rubin_scheduler.scheduler import sim_runner
 from rubin_scheduler.scheduler.model_observatory import ModelObservatory, tma_movement
 from rubin_scheduler.scheduler.schedulers import CoreScheduler, SimpleBandSched
-from rubin_scheduler.scheduler.utils import (
-    ObservationArray,
-)
-from rubin_scheduler.scheduler import sim_runner
+from rubin_scheduler.scheduler.targetofo import gen_all_events
+from rubin_scheduler.scheduler.utils import ObservationArray
+from rubin_scheduler.utils import DEFAULT_NSIDE
 
-
-from fbs_config import get_scheduler, SURVEY_START_MJD
+from fbs_config import SURVEY_START_MJD, get_scheduler
 
 
 def set_run_info(

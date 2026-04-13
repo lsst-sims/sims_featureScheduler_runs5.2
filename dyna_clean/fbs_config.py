@@ -5,14 +5,12 @@ import hashlib
 import os
 import pathlib
 
-import lsst_surveys as lsst_surveys
-import roman_surveys as roman_surveys
-import too_surveys as too_surveys
 import numpy as np
+import rubin_scheduler.scheduler.basis_functions as bf
 import rubin_scheduler.scheduler.detailers as detailers
-from lsst.ts.fbs.utils.maintel.lsst_surveys import safety_masks
+from astropy.time import Time
 from rubin_scheduler.data import get_data_dir
-from rubin_scheduler.scheduler.schedulers import CoreScheduler
+from rubin_scheduler.scheduler.schedulers import BaseQueueManager, CoreScheduler
 from rubin_scheduler.scheduler.surveys import ScriptedSurvey
 from rubin_scheduler.scheduler.utils import (
     CurrentAreaMap,
@@ -21,16 +19,19 @@ from rubin_scheduler.scheduler.utils import (
     make_rolling_footprints,
 )
 from rubin_scheduler.site_models import Almanac
-import rubin_scheduler.scheduler.basis_functions as bf
-from rubin_scheduler.scheduler.schedulers import BaseQueueManager
 
-
-from astropy.time import Time
+# import lsst.ts.fbs.utils.maintel.lsst_surveys as lsst_surveys
+# import lsst.ts.fbs.utils.maintel.roman_surveys as roman_surveys
+# import lsst.ts.fbs.utils.maintel.too_surveys as too_surveys
+import lsst_surveys as lsst_surveys
+import roman_surveys as roman_surveys
+import too_surveys as too_surveys
 
 SURVEY_START_MJD = Time("2026-04-01T12:00:00").mjd
 
 
-def generate_qm():
+def generate_qm() -> BaseQueueManager:
+    """Generate a QueueManager object."""
 
     detailer_list = []
     detailer_list.append(detailers.RotspUpdateDetailer())
@@ -136,7 +137,6 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
         7: [True, True, False, False, False, False],
     }
     ei_night_pattern = pattern_dict[ei_night_pattern]
-    reverse_ei_night_pattern = [not val for val in ei_night_pattern]
 
     # Generate footprint over the sky
     sky = CurrentAreaMap(nside=nside)
@@ -258,7 +258,7 @@ def get_scheduler() -> tuple[int, CoreScheduler]:
 
     ddfs = [
         ScriptedSurvey(
-            safety_masks(**safety_mask_params_ddf),
+            lsst_surveys.safety_masks(**safety_mask_params_ddf),
             nside=nside,
             detailers=detailer_list,
             survey_name="deep drilling",
