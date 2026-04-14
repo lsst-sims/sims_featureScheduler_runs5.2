@@ -38,7 +38,6 @@ def gen_too_surveys(
     nside: int = DEFAULT_NSIDE,
     detailer_list: list[detailers.BaseDetailer] | None = None,
     too_footprint: npt.NDArray | None = None,
-    split_long: bool = False,
     long_exp_nsnaps: int = 2,
     n_snaps: int = NEXP,
     science_program: str = SCIENCE_PROGRAM,
@@ -55,12 +54,6 @@ def gen_too_surveys(
         List of survey detailers.
     too_footprint : `np.ndarray` or None
         Footprint to contain ToOs within (such as the lsst footprint).
-    split_long : `bool`
-        Split long exposures (longer than 30s with the current defaults in
-        rubin_scheduler) into shorter exposures (60s) or not?
-        Splitting long exposures requires creation of nightly coadds, which
-        is not currently available. However long exposures may also pose
-        risks of tripping the sensors.
     long_exp_nsnaps : `int`
         The number of snaps for longer exposures. (60s??)
     n_snaps : `int`
@@ -113,7 +106,6 @@ def gen_too_surveys(
             detailers=deepcopy(detailer_list),
             too_types_to_follow=["GW_case_A"],
             survey_name="ToO, GW_case_A",
-            split_long=split_long,
             flushtime=48.0,
             n_snaps=long_exp_nsnaps,
             # Update target_name to match the alert event ID
@@ -147,7 +139,6 @@ def gen_too_surveys(
             target_name_base="GW_case_B_C",
             observation_reason="too_gw_case_b_c",
             science_program=science_program,
-            split_long=split_long,
             flushtime=48,
             n_snaps=long_exp_nsnaps,
         )
@@ -177,7 +168,6 @@ def gen_too_surveys(
             target_name_base="GW_case_D_E",
             observation_reason="too_gw_case_d_e",
             science_program=science_program,
-            split_long=split_long,
             flushtime=48,
             n_snaps=long_exp_nsnaps,
             event_gen_detailers=None,
@@ -217,7 +207,6 @@ def gen_too_surveys(
             target_name_base="GW_case_large",
             observation_reason="too_gw_case_large",
             science_program=science_program,
-            split_long=split_long,
             flushtime=48,
             n_snaps=long_exp_nsnaps,
             event_gen_detailers=None,
@@ -274,7 +263,6 @@ def gen_too_surveys(
             target_name_base="BBH",
             observation_reason="too_bbh",
             science_program=science_program,
-            split_long=split_long,
             flushtime=48,
             n_snaps=n_snaps,
             event_gen_detailers=event_detailers,
@@ -306,7 +294,6 @@ def gen_too_surveys(
             target_name_base="LensedBNS_A",
             observation_reason="too_lensed_bns_a",
             science_program=science_program,
-            split_long=split_long,
             flushtime=48.0,
             n_snaps=n_snaps,
         )
@@ -334,7 +321,6 @@ def gen_too_surveys(
             target_name_base="LensedBNS_B",
             observation_reason="too_lensed_bns_b",
             science_program=science_program,
-            split_long=split_long,
             flushtime=48.0,
             n_snaps=long_exp_nsnaps,
         )
@@ -374,7 +360,6 @@ def gen_too_surveys(
             target_name_base="neutrino",
             observation_reason="too_neutrino",
             science_program=science_program,
-            split_long=split_long,
             flushtime=20 * 24,
             n_snaps=n_snaps,
         )
@@ -408,7 +393,6 @@ def gen_too_surveys(
             target_name_base="SSO_night",
             observation_reason="too_sso_general",
             science_program=science_program,
-            split_long=split_long,
             flushtime=3.0,
             n_snaps=n_snaps,
         )
@@ -435,7 +419,6 @@ def gen_too_surveys(
             target_name_base="SSO_twi",
             observation_reason="too_sso_twi",
             science_program=science_program,
-            split_long=split_long,
             flushtime=3.0,
             n_snaps=n_snaps,
         )
@@ -469,7 +452,6 @@ def gen_too_surveys(
             target_name_base="SN_Galactic",
             observation_reason="too_sn_galactic",
             science_program=science_program,
-            split_long=split_long,
             flushtime=48.0,
             n_snaps=n_snaps,
         )

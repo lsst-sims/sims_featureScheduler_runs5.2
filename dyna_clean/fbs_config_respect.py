@@ -23,7 +23,7 @@ from rubin_scheduler.site_models import Almanac
 # import lsst.ts.fbs.utils.maintel.lsst_surveys as lsst_surveys
 # import lsst.ts.fbs.utils.maintel.roman_surveys as roman_surveys
 # import lsst.ts.fbs.utils.maintel.too_surveys as too_surveys
-import lsst_surveys as lsst_surveys
+import lsst_surveys_respect as lsst_surveys
 import roman_surveys as roman_surveys
 import too_surveys as too_surveys
 
